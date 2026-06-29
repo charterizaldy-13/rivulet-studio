@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="about.title">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rivulet Studio — About</title>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+<link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css?v=2">
+<link rel="stylesheet" href="css/pages/home.css">
+<link rel="stylesheet" href="css/pages/services.css">
+<link rel="stylesheet" href="css/pages/about.css">
+<link rel="stylesheet" href="css/pages/portfolio.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
+</head>
+<body class="page-about">
+<div class="page-reveal-overlay" aria-hidden="true"></div>
+
+<header id="site-navbar"></header>
+
+<div class="wrap">
+  <div class="head">
+    <div class="eyebrow" data-i18n="about.eyebrow">About Rivulet Studio</div>
+    <h1 data-i18n="about.heading">We start with questions, not templates.</h1>
+    <p class="sub" data-i18n="about.sub">Rivulet Studio is a small team of specialists — not one generalist trying to do everything. Every project starts with research, not a blank canvas.</p>
+  </div>
+</div>
+
+<!-- ===== HOW WE WORK ===== -->
+<section class="section">
+  <div class="section-head">
+    <div class="eyebrow" data-i18n="about.process.eyebrow">Our Process</div>
+    <h2 data-i18n="about.process.heading">Research first. Build and Craft, separately. Then one result.</h2>
+  </div>
+
+  <div class="process">
+    <div class="process-lead">
+      <h3 data-i18n="about.process.lead.title">We talk before we design.</h3>
+      <p data-i18n="about.process.lead.desc">Every project starts with a deep conversation — about your goals, your constraints, and what "done well" looks like for you specifically. We don't open a template until we understand the brief.</p>
+    </div>
+    <div class="process-stack">
+      <div class="process-step">
+        <h4 data-i18n="about.process.step1.title">Specialists, not one generalist.</h4>
+        <p data-i18n="about.process.step1.desc">Build and Craft are handled by different specialists on our team. A developer doesn't try to be a motion designer, and a motion designer doesn't try to be a backend engineer. Each side gets full attention from someone who's actually good at it.</p>
+      </div>
+      <div class="process-step minor">
+        <h4 data-i18n="about.process.step2.title">One result, reviewed together.</h4>
+        <p data-i18n="about.process.step2.desc">Before anything ships, the technical and creative sides come back together — checked against the same brief, the same goals. What you get is coherent, not stitched together.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THE TWO DISCIPLINES (reused 7/5 tile-hero pattern) ===== -->
+<section class="section" style="padding-top:0;">
+  <div class="section-head">
+    <div class="eyebrow" data-i18n="about.why.eyebrow">Why Two Disciplines</div>
+    <h2 data-i18n="about.why.heading">A good website needs both — and most studios are only strong at one.</h2>
+  </div>
+
+  <div class="grid">
+    <div class="tile-build-hero">
+      <div>
+        <div class="pillar-tag" data-i18n="pillar.build">Build</div>
+        <h2 data-i18n="about.why.build.title">Code that works correctly is non-negotiable.</h2>
+        <p data-i18n="about.why.build.desc">Our technical side is handled by people who care about performance, maintainability, and getting the logic right — not just making something that looks finished in a demo.</p>
+      </div>
+    </div>
+    <div class="tile-craft-hero">
+      <div class="pillar-tag" data-i18n="pillar.craft">Craft</div>
+      <h2 data-i18n="about.why.craft.title">Visuals carry the first impression.</h2>
+      <p data-i18n="about.why.craft.desc">Our creative side is handled by people trained in motion, color, and composition — the details most technical teams don't have time to perfect.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA + REVEAL ACTION BAR ===== -->
+<section class="section" style="padding-top:0; padding-bottom:1.5rem;">
+  <div class="reveal-footer">
+    <div class="cta-strip reveal-cta">
+      <h3 data-i18n="about.cta.heading">Want to know how we'd approach your project?</h3>
+      <a href="contact.html" data-i18n="about.cta.button">Talk to Us</a>
+    </div>
+    <div class="footer-actions">
+      <a href="portfolio.html" class="fa-btn"><span data-i18n="nav.portfolio">Portfolio</span> <span class="fa-arrow">→</span></a>
+      <a href="about.html" class="fa-btn"><span data-i18n="nav.about">About</span> <span class="fa-arrow">→</span></a>
+      <a href="#" class="fa-btn" target="_blank" rel="noopener noreferrer">Instagram <span class="fa-arrow">→</span></a>
+      <a href="https://wa.me/6280000000000" class="fa-btn" target="_blank" rel="noopener noreferrer">WhatsApp <span class="fa-arrow">→</span></a>
+    </div>
+  </div>
+  <div class="reveal-footer-room"></div>
+</section>
+
+<footer id="site-footer"></footer>
+
+<script src="js/page-reveal.js?v=2"></script>
+<script src="js/i18n.js"></script>
+<script src="js/components.js?v=2"></script>
+<script src="js/animations.js?v=11"></script>
+<script src="js/lenis-init.js?v=8"></script>
+<script src="js/nav-pill.js?v=1"></script>
+<script>
+  document.addEventListener('rivulet:partials-ready', () => {
+    if(window.RivuletAnimations){
+      window.RivuletAnimations.scrollReveal('.process-lead, .process-step, .tile-build-hero, .tile-craft-hero');
+      window.RivuletAnimations.revealFooterActions();
+      window.RivuletAnimations.charSlideInOnLoad('.head h1');
+      window.RivuletAnimations.charSlideInOnScroll('.section-head h2, .tile-build-hero h2, .tile-craft-hero h2');
+    }
+  });
+</script>
+</body>
+</html>

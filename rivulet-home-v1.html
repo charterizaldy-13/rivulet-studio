@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rivulet Studio — Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
+<style>
+  :root{ --ink:#0A0A0A; --paper:#F3F2EE; --white:#FFFFFF; --yellow:#F4E04D; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--paper); font-family:'Plus Jakarta Sans',sans-serif; color:var(--ink); overflow-x:hidden; }
+
+  /* ===== NAV ===== */
+  nav{
+    position:sticky; top:0; z-index:50;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:1.1rem 2.4rem; background:var(--ink); border-radius:100px; margin:1rem 2rem 0;
+  }
+  .logo{ color:var(--white); font-weight:800; font-size:1.1rem; letter-spacing:-0.01em; }
+  .nav-links{ display:flex; gap:2rem; }
+  .nav-links a{ color:#ccc; text-decoration:none; font-size:0.92rem; font-weight:500; }
+  .nav-cta{ background:var(--yellow); color:var(--ink); padding:0.65rem 1.4rem; border-radius:100px; font-weight:700; font-size:0.88rem; border:none; cursor:pointer; }
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height:88vh; padding: 6rem 2.4vw 3rem; max-width:1320px; margin:0 auto;
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  .eyebrow{ font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; color:#888; font-weight:700; margin-bottom:1.6rem; }
+  .hero-headline{
+    font-weight:800; line-height:0.96; letter-spacing:-0.025em;
+    font-size: clamp(2.8rem, 7.5vw, 6.4rem);
+    max-width: 17ch;
+  }
+  .hero-headline .word{ display:inline-block; overflow:hidden; }
+  .hero-headline .word span{ display:inline-block; will-change:transform; }
+  .hero-headline em{ font-style:italic; color:#555; font-weight:700; }
+
+  .hero-sub{
+    margin-top:2rem; max-width:46ch; font-size:1.1rem; line-height:1.6; color:#555; font-weight:400;
+    opacity:0;
+  }
+  .hero-cta-row{ margin-top:2.4rem; display:flex; gap:1rem; opacity:0; }
+  .btn-primary{ background:var(--ink); color:var(--white); padding:1rem 1.9rem; border-radius:100px; font-weight:700; font-size:0.95rem; border:none; cursor:pointer; }
+  .btn-secondary{ background:transparent; color:var(--ink); padding:1rem 1.9rem; border-radius:100px; font-weight:600; font-size:0.95rem; border:1.5px solid #ddd; cursor:pointer; }
+
+  /* ===== MARQUEE STRIP ===== */
+  .marquee-strip{
+    background:var(--ink); padding: 1.1rem 0; overflow:hidden; white-space:nowrap;
+    margin-top: 2rem;
+  }
+  .marquee-track{ display:inline-block; animation: scroll-left 22s linear infinite; }
+  .marquee-track span{ color:#666; font-weight:700; font-size:1rem; letter-spacing:0.03em; margin: 0 2rem; }
+  .marquee-track span.hi{ color:var(--yellow); }
+  @keyframes scroll-left{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+  /* ===== PILLAR SECTION (asymmetric, from services page) ===== */
+  .section{ padding: 6rem 2.4vw; max-width:1320px; margin:0 auto; }
+  .section-head{ margin-bottom: 3rem; }
+  .section-head .eyebrow{ margin-bottom:0.8rem; }
+  .section-head h2{ font-weight:800; font-size:clamp(2rem,4.5vw,3.2rem); letter-spacing:-0.02em; max-width:18ch; }
+
+  .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; }
+  .tile{ border-radius:4px; padding:2.2rem; display:flex; flex-direction:column; justify-content:space-between; }
+  .tile-build{ grid-column:span 7; background:var(--ink); color:var(--white); min-height:340px; }
+  .tile-build .ptag{ font-size:0.78rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#888; }
+  .tile-build h3{ font-weight:800; font-size:clamp(1.8rem,3.2vw,2.6rem); letter-spacing:-0.02em; margin:1rem 0; max-width:14ch; }
+  .tile-build p{ color:#aaa; font-size:0.98rem; line-height:1.6; max-width:34ch; }
+  .tile-build a.link{ margin-top:1.6rem; color:var(--yellow); font-weight:700; font-size:0.92rem; text-decoration:none; }
+
+  .tile-craft{ grid-column:span 5; background:var(--yellow); color:var(--ink); min-height:340px; }
+  .tile-craft .ptag{ font-size:0.78rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#8a7600; }
+  .tile-craft h3{ font-weight:800; font-size:clamp(1.6rem,2.8vw,2.2rem); letter-spacing:-0.02em; margin-top:1rem; }
+  .tile-craft a.link{ margin-top:1.6rem; color:var(--ink); font-weight:700; font-size:0.92rem; text-decoration:underline; }
+
+  /* ===== PORTFOLIO PREVIEW ===== */
+  .portfolio-grid{ display:grid; grid-template-columns: 1.4fr 1fr; gap:1.4rem; }
+  .pf-card{
+    position:relative; border-radius:4px; overflow:hidden; min-height:420px;
+    background-size:cover; background-position:center;
+    display:flex; align-items:flex-end;
+  }
+  .pf-card img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;
+  }
+  .pf-card .overlay{
+    position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.1) 55%, rgba(0,0,0,0) 100%);
+  }
+  .pf-card .content{ position:relative; z-index:2; padding:2rem; color:var(--white); }
+  .pf-card .cat{ font-size:0.76rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--yellow); font-weight:700; margin-bottom:0.5rem; }
+  .pf-card h4{ font-weight:800; font-size:1.5rem; letter-spacing:-0.01em; margin-bottom:0.4rem; }
+  .pf-card p{ font-size:0.88rem; color:#ccc; max-width:34ch; }
+  .pf-1{ background-image: linear-gradient(135deg, #1a1a1a, #2d2d2d); }
+  .pf-2{ background-image: linear-gradient(135deg, #1d2b1f, #355c3a); }
+
+  /* ===== CTA BAND ===== */
+  .cta-strip{
+    grid-column:span 12; background:var(--ink); border-radius:4px; padding:3.5rem 3rem; margin-top:1rem;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.5rem;
+  }
+  .cta-strip h3{ color:var(--white); font-weight:800; font-size:clamp(1.6rem,3vw,2.2rem); letter-spacing:-0.02em; max-width:22ch; }
+  .cta-strip button{ background:var(--yellow); color:var(--ink); border:none; padding:1.1rem 2.2rem; border-radius:100px; font-weight:700; font-size:1rem; cursor:pointer; white-space:nowrap; }
+
+  footer{ padding:3rem 2.4vw; display:flex; justify-content:space-between; max-width:1320px; margin:0 auto; font-size:0.85rem; color:#999; }
+  footer .logo-foot{ font-weight:800; color:var(--ink); font-size:1.05rem; }
+
+  @media (max-width:860px){
+    .tile-build, .tile-craft, .cta-strip{ grid-column:span 12; }
+    .portfolio-grid{ grid-template-columns:1fr; }
+    .nav-links{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Rivulet Studio</div>
+  <div class="nav-links">
+    <a href="#">Services</a>
+    <a href="#">Portfolio</a>
+    <a href="#">About</a>
+  </div>
+  <button class="nav-cta">Start a Project</button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="eyebrow">Rivulet Studio — Build & Craft</div>
+  <h1 class="hero-headline" id="heroHeadline">
+    Systems that hold.<br>Visuals that <em>stay.</em>
+  </h1>
+  <p class="hero-sub" id="heroSub">We build websites, applications, and automation — and design the motion, video, and visual identity behind your brand. One studio, two disciplines, one consistent standard.</p>
+  <div class="hero-cta-row" id="heroCta">
+    <button class="btn-primary">Start a Project</button>
+    <button class="btn-secondary">View Services</button>
+  </div>
+</section>
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>WEBSITE</span><span class="hi">·</span>
+    <span>WEB APPLICATION</span><span class="hi">·</span>
+    <span>AUTOMATION</span><span class="hi">·</span>
+    <span>MOTION GRAPHIC</span><span class="hi">·</span>
+    <span>VIDEO EDITING</span><span class="hi">·</span>
+    <span>GRAPHIC DESIGN</span><span class="hi">·</span>
+    <span>PHOTO EDITING</span><span class="hi">·</span>
+    <span>WEBSITE</span><span class="hi">·</span>
+    <span>WEB APPLICATION</span><span class="hi">·</span>
+    <span>AUTOMATION</span><span class="hi">·</span>
+    <span>MOTION GRAPHIC</span><span class="hi">·</span>
+    <span>VIDEO EDITING</span><span class="hi">·</span>
+    <span>GRAPHIC DESIGN</span><span class="hi">·</span>
+    <span>PHOTO EDITING</span><span class="hi">·</span>
+  </div>
+</div>
+
+<!-- ===== BUILD & CRAFT PREVIEW ===== -->
+<section class="section">
+  <div class="section-head">
+    <div class="eyebrow">What we do</div>
+    <h2>Two disciplines, one studio.</h2>
+  </div>
+  <div class="grid">
+    <div class="tile tile-build">
+      <div>
+        <div class="ptag">Build</div>
+        <h3>A technical foundation you can rely on.</h3>
+        <p>Websites, web applications, and automation — systems that work correctly behind the scenes.</p>
+      </div>
+      <a href="#" class="link">View Build services →</a>
+    </div>
+    <div class="tile tile-craft">
+      <div>
+        <div class="ptag">Craft</div>
+        <h3>Visual content that stays with people.</h3>
+      </div>
+      <a href="#" class="link">View Craft services →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PORTFOLIO PREVIEW ===== -->
+<section class="section">
+  <div class="section-head">
+    <div class="eyebrow">Portfolio</div>
+    <h2>A few projects we've delivered.</h2>
+  </div>
+  <div class="portfolio-grid">
+    <div class="pf-card pf-1">
+      <img src="images/portfolio/everafter-screenshot.jpg" alt="Ever After Wedding Organizer website" onerror="this.style.display='none'">
+      <div class="overlay"></div>
+      <div class="content">
+        <div class="cat">Build — Website</div>
+        <h4>Ever After Wedding Organizer</h4>
+        <p>A company profile website for a wedding organizer, built with a dark theme and lime accent, complete with service and package structure.</p>
+      </div>
+    </div>
+    <div class="pf-card pf-2">
+      <img src="images/portfolio/ireem-screenshot.jpg" alt="IREEM website" onerror="this.style.display='none'">
+      <div class="overlay"></div>
+      <div class="content">
+        <div class="cat">Build — Institutional Website</div>
+        <h4>IREEM</h4>
+        <p>An institutional website for an energy and environmental organization, with program structure and multilingual impact portfolio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section" style="padding-top:0;">
+  <div class="grid">
+    <div class="cta-strip">
+      <h3>Have a project that needs both technical and visual work?</h3>
+      <button>Discuss Your Project</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="logo-foot">Rivulet Studio</span>
+  <span>Home — Draft v2 (EN)</span>
+</footer>
+
+<script>
+  // Split hero headline into words for reveal animation
+  const headline = document.getElementById('heroHeadline');
+  const text = headline.innerHTML;
+  const lines = text.split('<br>');
+  headline.innerHTML = lines.map(line => {
+    return line.trim().split(' ').map(word => {
+      return `<span class="word"><span>${word}</span></span>`;
+    }).join(' ');
+  }).join('<br>');
+
+  gsap.set('.hero-headline .word span', { y: '110%' });
+
+  const tl = gsap.timeline({ defaults:{ ease:"power4.out" } });
+  tl.to('.hero-headline .word span', {
+      y: '0%',
+      duration: 0.9,
+      stagger: 0.05
+    })
+    .to('#heroSub', { opacity:1, y:0, duration:0.7 }, "-=0.3")
+    .to('#heroCta', { opacity:1, y:0, duration:0.7 }, "-=0.5");
+
+  gsap.set('#heroSub, #heroCta', { y: 16 });
+
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('.tile, .pf-card').forEach((el,i)=>{
+    gsap.set(el, { opacity:0, y:28 });
+    gsap.to(el, {
+      opacity:1, y:0, duration:0.8, ease:"power2.out", delay:(i%2)*0.1,
+      scrollTrigger:{ trigger: el, start:"top 88%" }
+    });
+  });
+</script>
+
+</body>
+</html>

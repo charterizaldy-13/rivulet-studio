@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rivulet Studio — Design System v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  :root{
+    --ink: #0A0A0A;
+    --paper: #F5F5F3;
+    --white: #FFFFFF;
+    --yellow: #F4E04D;
+    --gray: #8A8A85;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background: var(--paper);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    color: var(--ink);
+    overflow-x:hidden;
+  }
+
+  h1, h2, h3{ font-family:'Plus Jakarta Sans', sans-serif; }
+
+  /* ===== NAV ===== */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 1.1rem 2.4rem;
+    background: var(--ink);
+    border-radius: 100px;
+    margin: 1rem 2rem 0;
+  }
+  .logo{
+    color:var(--white);
+    font-weight:800;
+    font-size:1.1rem;
+    letter-spacing:-0.01em;
+  }
+  .nav-links{ display:flex; gap:2rem; }
+  .nav-links a{
+    color:#ccc;
+    text-decoration:none;
+    font-size:0.92rem;
+    font-weight:500;
+  }
+  .nav-cta{
+    background: var(--yellow);
+    color: var(--ink);
+    padding: 0.65rem 1.4rem;
+    border-radius: 100px;
+    font-weight:700;
+    font-size:0.88rem;
+    border:none;
+    cursor:pointer;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height: 82vh;
+    padding: 5rem 2.4rem 3rem;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    max-width:1400px;
+    margin:0 auto;
+  }
+  .label-row{ display:flex; align-items:center; gap:0.6rem; margin-bottom:1.6rem; }
+  .dot{ width:8px; height:8px; background:var(--yellow); border-radius:50%; }
+  .eyebrow{
+    font-size:0.82rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:#777;
+    font-weight:700;
+  }
+  .hero h1{
+    font-weight:800;
+    font-size: clamp(2.8rem, 6.4vw, 5.2rem);
+    line-height:1.03;
+    letter-spacing:-0.02em;
+    max-width: 16ch;
+  }
+  .hero .sub{
+    margin-top:1.8rem;
+    max-width:48ch;
+    font-size:1.08rem;
+    line-height:1.6;
+    color:#555;
+    font-weight:400;
+  }
+  .cta-row{ margin-top:2.4rem; display:flex; gap:1rem; }
+  .cta-primary{
+    background: var(--ink);
+    color: var(--white);
+    padding: 0.95rem 1.8rem;
+    border-radius:100px;
+    font-weight:700;
+    font-size:0.95rem;
+    border:none;
+    cursor:pointer;
+  }
+  .cta-secondary{
+    background:transparent;
+    color: var(--ink);
+    padding: 0.95rem 1.8rem;
+    border-radius:100px;
+    font-weight:600;
+    font-size:0.95rem;
+    border: 1.5px solid #ddd;
+    cursor:pointer;
+  }
+  .check-row{
+    margin-top:2.6rem;
+    display:flex;
+    gap:1.8rem;
+    flex-wrap:wrap;
+  }
+  .check-item{
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+    font-size:0.88rem;
+    font-weight:600;
+    color:#333;
+  }
+  .check-circle{
+    width:20px; height:20px;
+    background:var(--yellow);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.7rem;
+  }
+
+  /* ===== TYPE SCALE ===== */
+  .section{ padding: 4rem 2.4vw 1rem; max-width:1400px; margin:0 auto; }
+  .section-pad{ padding: 4rem 2.4vw; max-width:1400px; margin:0 auto; }
+  .type-grid{
+    display:grid;
+    grid-template-columns:140px 1fr;
+    gap:1.2rem 2rem;
+    align-items:baseline;
+  }
+  .type-label{ font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gray); font-weight:700; }
+  .t-h1{ font-weight:800; font-size:3rem; letter-spacing:-0.02em; }
+  .t-h2{ font-weight:700; font-size:1.9rem; letter-spacing:-0.01em; }
+  .t-body{ font-weight:400; font-size:1.05rem; color:#444; max-width:55ch; line-height:1.6; }
+  .t-label{ font-weight:600; font-size:0.85rem; color:#777; text-transform:uppercase; letter-spacing:0.05em; }
+
+  /* ===== COLOR SWATCH ===== */
+  .swatches{ display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:2rem; }
+  .swatch{ border-radius:20px; height:110px; display:flex; flex-direction:column; justify-content:flex-end; padding:0.9rem; font-size:0.72rem; font-weight:600; }
+
+  /* ===== CARDS ===== */
+  .cards-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2.5rem; }
+  .card{ background:var(--white); border-radius:28px; padding:2.2rem 1.8rem; border:1px solid #00000010; }
+  .card .icon-blob{ width:44px; height:44px; border-radius:12px; background:var(--ink); margin-bottom:1.4rem; }
+  .card h3{ font-weight:700; font-size:1.2rem; margin-bottom:0.6rem; }
+  .card p{ color:#666; font-size:0.92rem; line-height:1.55; font-weight:400; }
+
+  /* ===== CARD STACK (Lunchbox-style) ===== */
+  .stack-wrap{ padding:0 2.4vw; max-width:1400px; margin:3rem auto 0; }
+  .stack-card{
+    border-radius:40px;
+    padding: 4.5rem 4vw;
+    margin-top:-40px;
+    position:relative;
+  }
+  .stack-card:first-child{ margin-top:0; }
+  .stack-card.dark{ background:var(--ink); color:var(--white); }
+  .stack-card.light{ background:var(--white); color:var(--ink); }
+  .stack-card h2{ font-weight:700; font-size:clamp(1.8rem,3.2vw,2.6rem); max-width:18ch; margin-bottom:1rem; }
+  .stack-card p{ max-width:46ch; opacity:0.7; font-size:1rem; line-height:1.6; font-weight:400; }
+  .stack-card .eyebrow.on-dark{ color:#aaa; }
+  .stack-card .eyebrow.on-light{ color:#999; }
+
+  footer{
+    padding: 3rem 2.4vw;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    max-width:1400px;
+    margin:0 auto;
+    font-size:0.85rem;
+    color:#999;
+  }
+  footer .logo-foot{ font-weight:800; color:var(--ink); font-size:1.05rem; }
+
+  @media (max-width:760px){
+    .type-grid{ grid-template-columns:1fr; }
+    .swatches{ grid-template-columns:repeat(2,1fr); }
+    .cards-grid{ grid-template-columns:1fr; }
+    .nav-links{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Rivulet Studio</div>
+  <div class="nav-links">
+    <a href="#">Layanan</a>
+    <a href="#">Portfolio</a>
+    <a href="#">Tentang</a>
+  </div>
+  <button class="nav-cta">Mulai Project</button>
+</nav>
+
+<section class="hero">
+  <div class="label-row">
+    <span class="dot"></span>
+    <span class="eyebrow">Rivulet Studio — Web Development</span>
+  </div>
+  <h1>Website yang dibangun untuk dipercaya, bukan sekadar dilihat.</h1>
+  <p class="sub">Kami merancang dan membangun web experience yang clean, cepat, dan terasa premium — untuk brand lokal maupun internasional yang serius soal kesan pertama.</p>
+  <div class="cta-row">
+    <button class="cta-primary">Mulai Project</button>
+    <button class="cta-secondary">Lihat Portfolio</button>
+  </div>
+  <div class="check-row">
+    <div class="check-item"><span class="check-circle">✓</span> Landing Page & Web App</div>
+    <div class="check-item"><span class="check-circle">✓</span> Motion & Interaksi</div>
+    <div class="check-item"><span class="check-circle">✓</span> Klien Lokal & Internasional</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="eyebrow" style="margin-bottom:0.8rem;">Tipografi</div>
+  <div class="type-grid">
+    <div class="type-label">Heading 1</div>
+    <div class="t-h1">Plus Jakarta Sans</div>
+    <div class="type-label">Heading 2</div>
+    <div class="t-h2">untuk setiap judul section</div>
+    <div class="type-label">Body</div>
+    <div class="t-body">Font yang sama dipakai untuk body text dengan weight lebih ringan (400) — supaya tetap satu keluarga font dari headline sampai paragraf, konsisten dan mudah dibaca dalam Bahasa Indonesia maupun Inggris.</div>
+    <div class="type-label">Label</div>
+    <div class="t-label">Eyebrow · Caption · Badge</div>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="eyebrow" style="margin-bottom:0.8rem;">Palet Warna</div>
+  <div class="swatches">
+    <div class="swatch" style="background:var(--ink); color:var(--white);">Ink<br><span style="opacity:0.6;">#0A0A0A</span></div>
+    <div class="swatch" style="background:var(--white); color:var(--ink); border:1px solid #eee;">White<br><span style="opacity:0.6;">#FFFFFF</span></div>
+    <div class="swatch" style="background:var(--paper); color:var(--ink); border:1px solid #eee;">Paper<br><span style="opacity:0.6;">#F5F5F3</span></div>
+    <div class="swatch" style="background:var(--yellow); color:var(--ink);">Yellow<br><span style="opacity:0.6;">#F4E04D</span></div>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="eyebrow" style="margin-bottom:0.8rem;">Layanan</div>
+  <h2 class="t-h2" style="max-width:22ch;">Tiga hal yang kami kerjakan dengan serius.</h2>
+  <div class="cards-grid">
+    <div class="card"><div class="icon-blob"></div><h3>Landing Page</h3><p>Satu halaman, dampak maksimal — untuk peluncuran produk atau personal branding.</p></div>
+    <div class="card"><div class="icon-blob" style="background:var(--yellow);"></div><h3>Web App</h3><p>Multi-halaman dengan struktur jelas, dibangun untuk berkembang bersama bisnis Anda.</p></div>
+    <div class="card"><div class="icon-blob"></div><h3>Motion & Interaksi</h3><p>Animasi scroll dan transisi yang punya alasan untuk ada, bukan sekadar tren.</p></div>
+  </div>
+</section>
+
+<div class="stack-wrap">
+  <div class="stack-card dark">
+    <div class="eyebrow on-dark" style="margin-bottom:1rem;">Pendekatan</div>
+    <h2>Setiap detail punya alasan, bukan dekorasi kosong.</h2>
+    <p>Kami percaya desain yang baik itu jujur — tidak ada elemen yang dipasang hanya supaya "terlihat ramai".</p>
+  </div>
+  <div class="stack-card light">
+    <div class="eyebrow on-light" style="margin-bottom:1rem;">Hasil</div>
+    <h2>Performa cepat, kesan tetap mewah.</h2>
+    <p>Minimalis bukan berarti membosankan — ini soal membuat setiap pixel bekerja untuk satu tujuan.</p>
+  </div>
+</div>
+
+<footer>
+  <span class="logo-foot">Rivulet Studio</span>
+  <span>Design System v2 — Plus Jakarta Sans</span>
+</footer>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('.card').forEach((card, i) => {
+    gsap.set(card, { opacity:0, y:24 });
+    gsap.to(card, {
+      opacity:1, y:0, duration:0.7, ease:"power2.out", delay:i*0.08,
+      scrollTrigger:{ trigger: card, start:"top 85%" }
+    });
+  });
+  gsap.from('.hero h1', { opacity:0, y:24, duration:0.9, ease:"power3.out" });
+  gsap.from('.hero .sub', { opacity:0, y:18, duration:0.8, delay:0.2, ease:"power3.out" });
+  gsap.from('.hero .cta-row', { opacity:0, y:18, duration:0.8, delay:0.35, ease:"power3.out" });
+  gsap.from('.hero .check-row', { opacity:0, y:18, duration:0.8, delay:0.5, ease:"power3.out" });
+</script>
+
+</body>
+</html>

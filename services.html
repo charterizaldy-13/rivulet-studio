@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="services.title">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rivulet Studio — Services</title>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+<link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css?v=2">
+<link rel="stylesheet" href="css/pages/home.css">
+<link rel="stylesheet" href="css/pages/services.css">
+<link rel="stylesheet" href="css/pages/about.css">
+<link rel="stylesheet" href="css/pages/portfolio.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
+</head>
+<body class="page-services">
+<div class="page-reveal-overlay" aria-hidden="true"></div>
+
+<header id="site-navbar"></header>
+
+<div class="wrap">
+  <div class="head">
+    <div class="eyebrow" data-i18n="services.eyebrow">Services — Rivulet Studio</div>
+    <h1 data-i18n="services.heading">Two disciplines, one studio.</h1>
+  </div>
+
+  <div class="grid">
+
+    <!-- BUILD: dominant tile -->
+    <div class="tile-build-hero" id="build">
+      <div>
+        <div class="pillar-tag" data-i18n="pillar.build">Build</div>
+        <h2 data-i18n="services.build.title">A technical foundation you can rely on.</h2>
+        <p data-i18n="services.build.desc">Systems that work correctly behind the scenes — from company profile websites to automation that saves your team's working hours.</p>
+      </div>
+      <div class="services-list">
+        <div class="srow"><span data-i18n="services.build.items.website">Website Company / Organization</span> <span class="tag" data-i18n="services.build.items.websiteTag">Regular · Premium</span></div>
+        <div class="srow"><span data-i18n="services.build.items.webapp">Web-based Application</span> <span class="tag" data-i18n="services.build.items.webappTag">Calculator · POS · Custom</span></div>
+        <div class="srow"><span data-i18n="services.build.items.automation">Automation</span> <span class="tag" data-i18n="services.build.items.automationTag">n8n · Custom Workflow</span></div>
+      </div>
+    </div>
+
+    <!-- CRAFT: bright accent tile -->
+    <div class="tile-craft-hero" id="craft">
+      <div class="pillar-tag" data-i18n="pillar.craft">Craft</div>
+      <h2 data-i18n="services.craft.title">Visual content that stays with people.</h2>
+    </div>
+
+    <!-- CRAFT: list strip below the yellow tile -->
+    <div class="craft-strip">
+      <div class="craft-row"><span class="cname" data-i18n="services.craft.items.motion">Motion Graphic</span><span class="cdesc" data-i18n="services.craft.items.motionDesc">Promo animation & brand identity</span></div>
+      <div class="craft-row"><span class="cname" data-i18n="services.craft.items.video">Video Editing</span><span class="cdesc" data-i18n="services.craft.items.videoDesc">Color grading & editing</span></div>
+      <div class="craft-row"><span class="cname" data-i18n="services.craft.items.graphic">Graphic Design</span><span class="cdesc" data-i18n="services.craft.items.graphicDesc">Visual identity & promo materials</span></div>
+      <div class="craft-row"><span class="cname" data-i18n="services.craft.items.photo">Photo Editing</span><span class="cdesc" data-i18n="services.craft.items.photoDesc">Retouching & color correction</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== STICKY STACKING CARDS — one card per service ===== -->
+<section class="detail-intro">
+  <div class="detail-intro-inner">
+    <div class="eyebrow" data-i18n="services.detail.eyebrow">In Detail</div>
+    <h2 data-i18n="services.detail.heading">Every service, one at a time.</h2>
+    <p class="sub-copy" data-i18n="services.detail.sub">Seven services. Two disciplines. Scroll to explore.</p>
+    <div class="check-row">
+      <div class="check-item"><span class="check-circle">✓</span> <span data-i18n="pillar.build">Build</span></div>
+      <div class="check-item"><span class="check-circle">✓</span> <span data-i18n="pillar.craft">Craft</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="stack-wrap">
+
+  <div class="stack-card dark">
+    <div class="stack-card-inner">
+      <div class="stack-panel color">
+        <div class="pillar-tag" data-i18n="pillar.build">Build</div>
+        <h2 data-i18n="services.build.items.website">Website Company / Organization</h2>
+        <p data-i18n="services.build.items.websiteTag">Regular · Premium</p>
+      </div>
+      <div class="stack-panel white">
+        <div class="photo-frame"><img src="images/services/website-company-organization.jpg" alt="Website Company / Organization" data-i18n-attr="alt:services.build.items.website"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stack-card dark">
+    <div class="stack-card-inner">
+      <div class="stack-panel color">
+        <div class="pillar-tag" data-i18n="pillar.build">Build</div>
+        <h2 data-i18n="services.build.items.webapp">Web-based Application</h2>
+        <p data-i18n="services.build.items.webappTag">Calculator · POS · Custom</p>
+      </div>
+      <div class="stack-panel white">
+        <div class="photo-frame"><img src="images/services/web-based-application.jpg" alt="Web-based Application" data-i18n-attr="alt:services.build.items.webapp"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stack-card dark">
+    <div class="stack-card-inner">
+      <div class="stack-panel color">
+        <div class="pillar-tag" data-i18n="pillar.build">Build</div>
+        <h2 data-i18n="services.build.items.automation">Automation</h2>
+        <p data-i18n="services.build.items.automationTag">n8n · Custom Workflow</p>
+      </div>
+      <div class="stack-panel white">
+        <div class="photo-frame"><img src="images/services/automation.jpg" alt="Automation" data-i18n-attr="alt:services.build.items.automation"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stack-card yellow">
+    <div class="stack-card-inner">
+      <div class="stack-panel color">
+        <div class="pillar-tag" data-i18n="pillar.craft">Craft</div>
+        <h2 data-i18n="services.craft.items.motion">Motion Graphic</h2>
+        <p data-i18n="services.craft.items.motionDesc">Promo animation & brand identity</p>
+      </div>
+      <div class="stack-panel white">
+        <div class="photo-frame"><img src="images/services/motion-graphic.jpg" alt="Motion Graphic" data-i18n-attr="alt:services.craft.items.motion"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stack-card yellow">
+    <div class="stack-card-inner">
+      <div class="stack-panel color">
+        <div class="pillar-tag" data-i18n="pillar.craft">Craft</div>
+        <h2 data-i18n="services.craft.items.video">Video Editing</h2>
+        <p data-i18n="services.craft.items.videoDesc">Color grading & editing</p>
+      </div>
+      <div class="stack-panel white">
+        <div class="photo-frame"><img src="images/services/video-editing.jpg" alt="Video Editing" data-i18n-attr="alt:services.craft.items.video"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stack-card yellow">
+    <div class="stack-card-inner">
+      <div class="stack-panel color">
+        <div class="pillar-tag" data-i18n="pillar.craft">Craft</div>
+        <h2 data-i18n="services.craft.items.graphic">Graphic Design</h2>
+        <p data-i18n="services.craft.items.graphicDesc">Visual identity & promo materials</p>
+      </div>
+      <div class="stack-panel white">
+        <div class="photo-frame"><img src="images/services/graphic-design.jpg" alt="Graphic Design" data-i18n-attr="alt:services.craft.items.graphic"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stack-card yellow">
+    <div class="stack-card-inner">
+      <div class="stack-panel color">
+        <div class="pillar-tag" data-i18n="pillar.craft">Craft</div>
+        <h2 data-i18n="services.craft.items.photo">Photo Editing</h2>
+        <p data-i18n="services.craft.items.photoDesc">Retouching & color correction</p>
+      </div>
+      <div class="stack-panel white">
+        <div class="photo-frame"><img src="images/services/photo-editing.jpg" alt="Photo Editing" data-i18n-attr="alt:services.craft.items.photo"></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- CTA + REVEAL ACTION BAR -->
+<div class="wrap" style="padding-top:0;">
+  <div class="reveal-footer">
+    <div class="cta-strip reveal-cta">
+      <h3 data-i18n="cta.heading">Have a project that needs both technical and visual work?</h3>
+      <a href="contact.html" data-i18n="cta.button">Discuss Your Project</a>
+    </div>
+    <div class="footer-actions">
+      <a href="portfolio.html" class="fa-btn"><span data-i18n="nav.portfolio">Portfolio</span> <span class="fa-arrow">→</span></a>
+      <a href="about.html" class="fa-btn"><span data-i18n="nav.about">About</span> <span class="fa-arrow">→</span></a>
+      <a href="#" class="fa-btn" target="_blank" rel="noopener noreferrer">Instagram <span class="fa-arrow">→</span></a>
+      <a href="https://wa.me/6280000000000" class="fa-btn" target="_blank" rel="noopener noreferrer">WhatsApp <span class="fa-arrow">→</span></a>
+    </div>
+  </div>
+  <div class="reveal-footer-room"></div>
+</div>
+
+<footer id="site-footer" style="margin-top:1rem;"></footer>
+
+<script src="js/page-reveal.js?v=2"></script>
+<script src="js/i18n.js"></script>
+<script src="js/components.js?v=2"></script>
+<script src="js/animations.js?v=11"></script>
+<script src="js/lenis-init.js?v=8"></script>
+<script src="js/nav-pill.js?v=1"></script>
+<script>
+  document.addEventListener('rivulet:partials-ready', () => {
+    if(window.RivuletAnimations){
+      window.RivuletAnimations.scrollReveal('.tile-build-hero, .tile-craft-hero, .craft-strip');
+      window.RivuletAnimations.revealFooterActions();
+      window.RivuletAnimations.charSlideInOnLoad('.head h1');
+      window.RivuletAnimations.charSlideInOnScroll('.tile-build-hero h2, .tile-craft-hero h2, .detail-intro h2, .stack-card h2');
+    }
+  });
+</script>
+</body>
+</html>

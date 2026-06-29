@@ -1,0 +1,332 @@
+/* ===== PAGE SHELL (shared wrap/head used by services & about) ===== */
+.wrap{ max-width:1760px; margin:0 auto; padding:4rem 2.8vw 0; }
+.head{ margin-bottom:4.5rem; }
+.head .eyebrow{ margin-bottom:1rem; }
+
+/* ===== CHAR SLIDE-IN (section headline reveal) ===== */
+.char-word{ display:inline-block; white-space:nowrap; }
+.char-wrap{ display:inline-block; overflow:hidden; padding-bottom:0.14em; margin-bottom:-0.14em; vertical-align:top; }
+.char{ display:inline-block; }
+
+/* ===== NAV ===== */
+nav{
+  position:sticky; top:0; z-index:50;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:1.1rem 2.4rem; background:var(--ink); border-radius:100px; margin:1rem 2rem 0;
+}
+.logo{ display:flex; align-items:center; gap:0.6rem; color:var(--white); font-weight:800; font-size:1.1rem; letter-spacing:-0.01em; text-decoration:none; }
+.logo img{ height:24px; display:block; }
+.nav-links{ position:relative; display:flex; gap:0.2rem; }
+.nav-links a{
+  position:relative; z-index:1;
+  color:#ccc; text-decoration:none; font-size:0.92rem; font-weight:500;
+  padding:0.6rem 1.1rem; border-radius:100px;
+  transition:color 0.4s ease;
+}
+.nav-links a:hover{ color:var(--white); }
+.nav-links a.is-active-text{ color:var(--ink); }
+
+/* ===== NAV "EXCLUSION" PILL — single white pill that slides between hovered items ===== */
+.nav-pill{
+  position:absolute; top:0; left:0; height:100%; width:0;
+  background:var(--white); border-radius:100px;
+  z-index:0; opacity:0; pointer-events:none;
+}
+
+/* ===== PAGE REVEAL OVERLAY — covers the viewport by default (pure CSS, no JS
+   needed for this state) so a freshly-loaded page never shows bare content
+   before the navbar partial + animations are ready. Just fades out once
+   rivulet:partials-ready fires — no scale/shape animation. ===== */
+.page-reveal-overlay{
+  position:fixed; inset:0; z-index:99999;
+  background:var(--white);
+  pointer-events:none;
+}
+
+.nav-right{ display:flex; align-items:center; gap:0.9rem; }
+.nav-cta{ background:var(--yellow); color:var(--ink); padding:0.65rem 1.4rem; border-radius:100px; font-weight:700; font-size:0.88rem; border:none; cursor:pointer; }
+
+/* ===== LANGUAGE SWITCHER ===== */
+.lang-switch{ display:flex; align-items:center; gap:0.2rem; background:rgba(255,255,255,0.08); border-radius:100px; padding:0.25rem; }
+.lang-switch button{ background:transparent; border:none; color:#999; font-size:0.76rem; font-weight:700; letter-spacing:0.02em; padding:0.35rem 0.65rem; border-radius:100px; cursor:pointer; font-family:inherit; }
+.lang-switch button:hover:not(.active){ color:var(--white); }
+.lang-switch button.active{ background:var(--yellow); color:var(--ink); }
+
+/* ===== BUTTONS ===== */
+.btn-primary{ background:var(--yellow); color:var(--ink); padding:1rem 1.9rem; border-radius:100px; font-weight:700; font-size:0.95rem; border:none; cursor:pointer; text-decoration:none; display:inline-block; }
+.btn-secondary{ background:transparent; color:var(--ink); padding:1rem 1.9rem; border-radius:100px; font-weight:600; font-size:0.95rem; border:1.5px solid #ddd; cursor:pointer; text-decoration:none; display:inline-block; }
+
+/* ===== BTN-PRIMARY "INVERT" HOVER — white layer rises from below, text swaps via translateY ===== */
+.btn-invert{ position:relative; overflow:hidden; }
+.btn-invert-layer{
+  position:absolute; inset:-1px; z-index:0;
+  background:var(--ink);
+  border-radius:50% 50% 0 0;
+  transform:translateY(100%);
+  transition:transform 0.7s cubic-bezier(.4,0,0,1), border-radius 0.7s cubic-bezier(.4,0,0,1);
+}
+.btn-invert:hover .btn-invert-layer{ transform:translateY(0%); border-radius:100px; }
+
+/* Invisible normal-flow span — gives the button its natural height from
+   padding+line-height, since the two visible text layers below are both
+   absolutely positioned (so they can translate by 100% of the FULL button
+   box, not just their own line-height, guaranteeing a clean exit/enter). */
+.btn-invert-ghost{ visibility:hidden; display:block; white-space:nowrap; }
+
+.btn-invert-text{
+  position:absolute; inset:0; z-index:1;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--ink); white-space:nowrap;
+  transition:transform 0.7s cubic-bezier(.4,0,0,1), color 0.7s cubic-bezier(.4,0,0,1);
+}
+.btn-invert:hover .btn-invert-text-in{ color:var(--white); }
+.btn-invert-text-out{ transform:translateY(0%); }
+.btn-invert:hover .btn-invert-text-out{ transform:translateY(-100%); }
+.btn-invert-text-in{ transform:translateY(100%); }
+.btn-invert:hover .btn-invert-text-in{ transform:translateY(0%); }
+
+/* ===== BTN-SECONDARY "ARROW SWIPE" HOVER — circle scales in, arrow icons swap via translateX ===== */
+.btn-arrow-swipe{ display:inline-flex; align-items:center; padding:0.7rem 0.5rem 0.7rem 1.9rem; gap:0.7rem; }
+.arrow-circle{
+  position:relative; overflow:hidden;
+  width:2.3rem; height:2.3rem; border-radius:100px;
+  display:inline-flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.arrow-circle::before{
+  content:''; position:absolute; inset:0; z-index:0;
+  background:var(--ink); border-radius:100px;
+  transform:scale(0);
+  transition:transform 0.6s cubic-bezier(0.83,0,0.17,1);
+}
+.btn-arrow-swipe:hover .arrow-circle::before{ transform:scale(1); }
+
+.arrow-swipe-icon{
+  position:absolute; inset:0; z-index:1; display:flex; align-items:center; justify-content:center;
+  font-size:0.9rem; line-height:1;
+  transition:transform 0.6s cubic-bezier(0.83,0,0.17,1), color 0.6s cubic-bezier(0.83,0,0.17,1);
+}
+.arrow-swipe-icon svg{ width:2rem; height:2rem; }
+.arrow-swipe-icon.arrow-out{ transform:translateX(0); color:var(--ink); }
+.arrow-swipe-icon.arrow-in{ transform:translateX(-150%); color:var(--white); }
+.btn-arrow-swipe:hover .arrow-swipe-icon.arrow-out{ transform:translateX(150%); }
+.btn-arrow-swipe:hover .arrow-swipe-icon.arrow-in{ transform:translateX(0); }
+
+/* ===== TILE (asymmetric pillar cards) ===== */
+.tile{ border-radius:4px; padding:2.2rem; display:flex; flex-direction:column; justify-content:space-between; }
+
+.tile-build{ background:var(--ink); color:var(--white); }
+.tile-build .ptag{ font-size:0.78rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#888; }
+.tile-build h3{ font-weight:800; letter-spacing:-0.02em; margin:1rem 0; }
+.tile-build p{ color:#aaa; font-size:0.98rem; line-height:1.6; }
+.tile-build a.link{ margin-top:1.6rem; color:var(--yellow); font-weight:700; font-size:0.92rem; text-decoration:none; }
+
+.tile-craft{ background:var(--yellow); color:var(--ink); }
+.tile-craft .ptag{ font-size:0.78rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#8a7600; }
+.tile-craft h3{ font-weight:800; letter-spacing:-0.02em; margin-top:1rem; }
+.tile-craft a.link{ margin-top:1.6rem; color:var(--ink); font-weight:700; font-size:0.92rem; text-decoration:underline; }
+
+/* ===== TILE-HERO (dominant 7/5 pillar split — services.html, about.html) ===== */
+.tile-build-hero{
+  grid-column: span 7;
+  grid-row: span 2;
+  background: var(--ink);
+  color: var(--white);
+  min-height: 500px;
+  border-radius:4px; padding:3rem; display:flex; flex-direction:column; justify-content:space-between;
+}
+.tile-build-hero .pillar-tag{ font-size:0.82rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#888; }
+.tile-build-hero h2{
+  font-weight:800; font-size: clamp(2.6rem, 5vw, 4.2rem); letter-spacing:-0.025em; margin: 1.4rem 0 1.8rem;
+  max-width: 12ch;
+}
+.tile-build-hero p{ font-size:1.1rem; color:#aaa; line-height:1.6; max-width:36ch; }
+.tile-build-hero .services-list{ margin-top: 2rem; display:flex; flex-direction:column; gap: 0; }
+.tile-build-hero .services-list .srow{
+  display:flex; justify-content:space-between; align-items:baseline;
+  padding: 1.1rem 0; border-top: 1px solid #2a2a2a;
+  font-weight:600; font-size:1.1rem;
+}
+.tile-build-hero .services-list .srow:first-child{ border-top:none; }
+.tile-build-hero .services-list .srow span.tag{ font-size:0.8rem; color:#888; font-weight:500; }
+
+.tile-craft-hero{
+  grid-column: span 5;
+  background: var(--yellow);
+  color: var(--ink);
+  min-height: 240px;
+  border-radius:4px; padding:3rem; display:flex; flex-direction:column; justify-content:space-between;
+}
+.tile-craft-hero .pillar-tag{ font-size:0.82rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#8a7600; }
+.tile-craft-hero h2{ font-weight:800; font-size: clamp(2.2rem, 3.6vw, 3.2rem); letter-spacing:-0.025em; margin-top:1rem; }
+.tile-craft-hero p{ font-size:1.05rem; color:#5c4f00; line-height:1.6; max-width:30ch; margin-top:1.1rem; }
+
+.craft-strip{
+  grid-column: span 5;
+  display:flex;
+  flex-direction:column;
+  background: var(--white);
+  border-radius:4px;
+  overflow:hidden;
+}
+.craft-row{
+  display:flex; justify-content:space-between; align-items:center;
+  padding: 1.3rem 1.6rem;
+  border-bottom: 1px solid #eae9e4;
+  font-weight:600;
+}
+.craft-row:last-child{ border-bottom:none; }
+.craft-row .cname{ font-size:1.02rem; }
+.craft-row .cdesc{ font-size:0.82rem; color:#888; font-weight:400; max-width:24ch; text-align:right; }
+
+/* ===== CTA BAND ===== */
+.cta-strip{
+  grid-column:span 12; background:var(--ink); border-radius:28px; padding:4.5rem 4rem; margin-top:1rem;
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.5rem;
+}
+.cta-strip h3{ color:var(--white); font-weight:800; font-size:clamp(2rem,3.8vw,3rem); letter-spacing:-0.025em; max-width:24ch; }
+.cta-strip button, .cta-strip a{ background:var(--yellow); color:var(--ink); border:none; padding:1.2rem 2.4rem; border-radius:100px; font-weight:700; font-size:1.05rem; cursor:pointer; white-space:nowrap; text-decoration:none; }
+
+/* ===== REVEAL FOOTER — CTA card with an action-bar card sliding out from behind it (SOHub-style) =====
+   .footer-actions sits right after .reveal-cta in flow, z-index below it. JS (animations.js ->
+   revealFooterActions) sets it to translateY(-100%) (fully tucked behind/under the CTA, hidden)
+   and animates it to translateY(0) tied to scroll progress (GSAP ScrollTrigger scrub) as the CTA
+   card scrolls through the viewport — matching SOHub's scroll-linked reveal, not a sticky/pin. */
+.reveal-footer{ position:relative; }
+.reveal-footer .reveal-cta{ position:relative; z-index:2; }
+.reveal-footer-room{ height:40px; }
+
+@media (max-width:860px){
+  .reveal-footer-room{ height:24px; }
+}
+
+.footer-actions{
+  position:relative; z-index:1;
+  background:#161616;
+  margin:-2.2rem 1.8rem 0;
+  padding:3.6rem 2.4rem 1.8rem;
+  border-radius:22px;
+  display:flex; align-items:center; justify-content:flex-start; flex-wrap:wrap; gap:1rem;
+  will-change:transform;
+}
+
+.fa-btn{
+  display:inline-flex; align-items:center; gap:0.6rem;
+  background:rgba(255,255,255,0.08); color:var(--white);
+  padding:0.8rem 1.4rem; border-radius:100px;
+  font-weight:700; font-size:0.92rem; text-decoration:none;
+  transition:background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.fa-btn:hover{ background:var(--yellow); color:var(--ink); transform:translateY(-2px); }
+.fa-btn .fa-arrow{ display:inline-block; transition:transform 0.25s ease; }
+.fa-btn:hover .fa-arrow{ transform:translate(3px,-3px); }
+
+@media (max-width:860px){
+  .footer-actions{ margin:-1.6rem 0.8rem 0; padding:3rem 1.6rem 1.6rem; gap:0.7rem; }
+  .fa-btn{ padding:0.7rem 1.1rem; font-size:0.85rem; }
+}
+
+/* ===== DETAIL INTRO (Lunchbox-style full-bleed dark hero, leads into stack) ===== */
+.detail-intro{
+  background:var(--ink); color:var(--white);
+  min-height:80vh; display:flex; align-items:center;
+  margin:5rem clamp(1rem,2vw,2rem) 0; max-width:1760px; margin-left:auto; margin-right:auto;
+  border-radius:32px; padding:5rem clamp(2rem,5vw,5rem);
+}
+.detail-intro-inner{ max-width:64ch; }
+.detail-intro .eyebrow{ color:var(--white); }
+.detail-intro h2{
+  font-weight:800; font-size:clamp(4rem,9vw,7.6rem); line-height:0.98; letter-spacing:-0.03em;
+  margin-top:1.4rem;
+}
+.detail-intro .sub-copy{ margin-top:1.8rem; font-size:clamp(1.05rem,1.6vw,1.3rem); color:#aaa; font-weight:500; }
+.detail-intro .check-row{ margin-top:2.6rem; display:flex; gap:1.8rem; flex-wrap:wrap; }
+.detail-intro .check-item{ display:flex; align-items:center; gap:0.6rem; font-size:0.95rem; font-weight:600; color:#ddd; }
+.detail-intro .check-circle{
+  width:22px; height:22px; border-radius:50%; background:var(--yellow); color:var(--ink);
+  display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:700;
+}
+
+@media (max-width:760px){
+  .detail-intro{ min-height:auto; padding:3.5rem 6vw; margin:3rem 4vw 0; border-radius:4px; }
+}
+
+/* ===== STICKY STACKING CARDS (Lunchbox-style scroll stack) =====
+   Mechanism is pure CSS position:sticky — each card sticks near the top
+   of the viewport until the next card's normal document flow pushes it
+   out of view, visually "covering" the previous card. Cards are inset
+   (not full-bleed) so the slide is visible against the paper background,
+   and each card is split into a color panel (text) + white panel (mock
+   visual), alternating sides per card. */
+.stack-wrap{ position:relative; margin-top:1.5rem; padding:clamp(1rem,2vw,2rem); }
+.stack-card{
+  position: sticky;
+  top: clamp(1rem,2vw,2rem);
+  height: 68vh;
+  border-radius: 32px;
+  overflow:hidden;
+  max-width:1760px; margin-left:auto; margin-right:auto;
+}
+.stack-card-inner{ display:flex; height:100%; }
+.stack-card:nth-of-type(even) .stack-card-inner{ flex-direction:row-reverse; }
+
+.stack-panel{ flex:1 1 50%; display:flex; flex-direction:column; justify-content:center; padding:4rem 3.4vw; }
+.stack-panel.color .pillar-tag{ font-size:0.78rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; }
+.stack-card.dark .stack-panel.color{ background:var(--ink); color:var(--white); }
+.stack-card.dark .stack-panel.color .pillar-tag{ color:#888; }
+.stack-card.yellow .stack-panel.color{ background:var(--yellow); color:var(--ink); }
+.stack-card.yellow .stack-panel.color .pillar-tag{ color:#8a7600; }
+
+.stack-panel.color h2{ font-weight:800; font-size:clamp(2rem,3.6vw,3rem); letter-spacing:-0.02em; margin:1.2rem 0 1.2rem; max-width:16ch; }
+.stack-panel.color p{ font-size:1.05rem; line-height:1.6; max-width:34ch; }
+.stack-card.dark .stack-panel.color p{ color:#aaa; }
+.stack-card.yellow .stack-panel.color p{ color:#5c4f00; }
+
+.stack-panel.white{ background:var(--white); display:flex; align-items:center; justify-content:center; padding:2.5rem; }
+
+/* service photo — real project/reference imagery per service */
+.photo-frame{
+  width:100%; height:100%; border-radius:32px;
+  overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,0.12);
+}
+.photo-frame img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+/* later cards must paint over earlier ones as they slide up */
+.stack-card:nth-of-type(1){ z-index:1; }
+.stack-card:nth-of-type(2){ z-index:2; }
+.stack-card:nth-of-type(3){ z-index:3; }
+.stack-card:nth-of-type(4){ z-index:4; }
+.stack-card:nth-of-type(5){ z-index:5; }
+.stack-card:nth-of-type(6){ z-index:6; }
+.stack-card:nth-of-type(7){ z-index:7; }
+
+@media (max-width:760px){
+  .stack-wrap{ padding:0 6vw; }
+  .stack-card{
+    position:static; height:auto; border-radius:4px; margin-bottom:1rem;
+  }
+  .stack-card-inner{ height:auto; }
+  .stack-card-inner, .stack-card:nth-of-type(even) .stack-card-inner{ flex-direction:column; }
+  .stack-panel{ padding:2.6rem 6vw; }
+  .stack-panel.white{ padding:2rem 6vw; }
+  .photo-frame{ max-width:320px; }
+}
+
+/* ===== MARQUEE STRIP ===== */
+.marquee-strip{
+  background:var(--ink); padding: 1.1rem 0; overflow:hidden; white-space:nowrap;
+}
+.marquee-track{ display:inline-block; animation: scroll-left 22s linear infinite; }
+.marquee-track span{ color:#666; font-weight:700; font-size:1rem; letter-spacing:0.03em; margin: 0 2rem; }
+.marquee-track span.hi{ color:var(--yellow); }
+@keyframes scroll-left{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+/* ===== FOOTER ===== */
+footer{ padding:3rem 2.8vw; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; max-width:1760px; margin:0 auto; font-size:0.85rem; color:#999; }
+footer .logo-foot{ font-weight:800; color:var(--ink); font-size:1.05rem; }
+
+@media (max-width:860px){
+  .tile-build, .tile-craft, .cta-strip,
+  .tile-build-hero, .tile-craft-hero, .craft-strip{ grid-column:span 12 !important; }
+  .tile-build-hero{ min-height:auto; }
+}

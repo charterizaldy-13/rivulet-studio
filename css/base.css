@@ -1,0 +1,28 @@
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  background: var(--paper);
+  font-family:'Plus Jakarta Sans', sans-serif;
+  color: var(--ink);
+  overflow-x:hidden;
+}
+h1, h2, h3{ font-family:'Plus Jakarta Sans', sans-serif; }
+
+.eyebrow{
+  font-size:0.82rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:#888;
+  font-weight:700;
+}
+
+.section{ padding: 6rem 2.8vw; max-width:1760px; margin:0 auto; }
+.section-head{ margin-bottom: 3.5rem; }
+.section-head .eyebrow{ margin-bottom:0.8rem; }
+.section-head h2{ font-weight:800; font-size:clamp(2.2rem,5.5vw,4.2rem); letter-spacing:-0.02em; max-width:18ch; }
+
+.grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:1rem; }
+
+@media (max-width:860px){
+  .nav-links{ display:none; }
+}

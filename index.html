@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="home.title">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rivulet Studio — Build & Craft</title>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+<link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css?v=2">
+<link rel="stylesheet" href="css/pages/home.css">
+<link rel="stylesheet" href="css/pages/services.css">
+<link rel="stylesheet" href="css/pages/about.css">
+<link rel="stylesheet" href="css/pages/portfolio.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
+</head>
+<body class="page-home">
+<div class="page-reveal-overlay" aria-hidden="true"></div>
+
+<header id="site-navbar"></header>
+
+<div class="hero-bg">
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="eyebrow" data-i18n="home.eyebrow">Rivulet Studio — Build & Craft</div>
+  <h1 class="hero-headline" id="heroHeadline" data-i18n="home.hero.headline" data-i18n-html>
+    Systems that hold.<br>Visuals that <em>stay.</em>
+  </h1>
+  <p class="hero-sub" id="heroSub" data-i18n="home.hero.sub">We build websites, applications, and automation — and design the motion, video, and visual identity behind your brand. One studio, two disciplines, one consistent standard.</p>
+  <div class="hero-cta-row" id="heroCta">
+    <a href="contact.html" class="btn-primary btn-invert">
+      <span class="btn-invert-layer" aria-hidden="true"></span>
+      <span class="btn-invert-ghost" aria-hidden="true" data-i18n="home.hero.ctaPrimary">Start a Project</span>
+      <span class="btn-invert-text btn-invert-text-out" data-i18n="home.hero.ctaPrimary">Start a Project</span>
+      <span class="btn-invert-text btn-invert-text-in" data-i18n="home.hero.ctaPrimary" aria-hidden="true">Start a Project</span>
+    </a>
+    <a href="services.html" class="btn-secondary btn-arrow-swipe">
+      <span data-i18n="home.hero.ctaSecondary">View Services</span>
+      <span class="arrow-circle">
+        <span class="arrow-swipe-icon arrow-out"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="arrow-swipe-icon arrow-in"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </span>
+    </a>
+  </div>
+</section>
+</div>
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span data-i18n="marquee.website">WEBSITE</span><span class="hi">·</span>
+    <span data-i18n="marquee.webapp">WEB APPLICATION</span><span class="hi">·</span>
+    <span data-i18n="marquee.automation">AUTOMATION</span><span class="hi">·</span>
+    <span data-i18n="marquee.motion">MOTION GRAPHIC</span><span class="hi">·</span>
+    <span data-i18n="marquee.video">VIDEO EDITING</span><span class="hi">·</span>
+    <span data-i18n="marquee.graphic">GRAPHIC DESIGN</span><span class="hi">·</span>
+    <span data-i18n="marquee.photo">PHOTO EDITING</span><span class="hi">·</span>
+    <span data-i18n="marquee.website">WEBSITE</span><span class="hi">·</span>
+    <span data-i18n="marquee.webapp">WEB APPLICATION</span><span class="hi">·</span>
+    <span data-i18n="marquee.automation">AUTOMATION</span><span class="hi">·</span>
+    <span data-i18n="marquee.motion">MOTION GRAPHIC</span><span class="hi">·</span>
+    <span data-i18n="marquee.video">VIDEO EDITING</span><span class="hi">·</span>
+    <span data-i18n="marquee.graphic">GRAPHIC DESIGN</span><span class="hi">·</span>
+    <span data-i18n="marquee.photo">PHOTO EDITING</span><span class="hi">·</span>
+  </div>
+</div>
+
+<!-- ===== BUILD & CRAFT PREVIEW ===== -->
+<section class="section">
+  <div class="section-head">
+    <div class="eyebrow" data-i18n="home.whatWeDo.eyebrow">What we do</div>
+    <h2 data-i18n="home.whatWeDo.heading">Two disciplines, one studio.</h2>
+  </div>
+  <div class="grid">
+    <div class="tile tile-build">
+      <div>
+        <div class="ptag" data-i18n="pillar.build">Build</div>
+        <h3 data-i18n="home.whatWeDo.buildTitle">A technical foundation you can rely on.</h3>
+        <p data-i18n="home.whatWeDo.buildDesc">Websites, web applications, and automation — systems that work correctly behind the scenes.</p>
+      </div>
+      <a href="services.html#build" class="link" data-i18n="home.whatWeDo.buildLink">View Build services →</a>
+    </div>
+    <div class="tile tile-craft">
+      <div>
+        <div class="ptag" data-i18n="pillar.craft">Craft</div>
+        <h3 data-i18n="home.whatWeDo.craftTitle">Visual content that stays with people.</h3>
+      </div>
+      <a href="services.html#craft" class="link" data-i18n="home.whatWeDo.craftLink">View Craft services →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PORTFOLIO PREVIEW ===== -->
+<section class="section">
+  <div class="section-head">
+    <div class="eyebrow" data-i18n="home.portfolio.eyebrow">Portfolio</div>
+    <h2 data-i18n="home.portfolio.heading">A few projects we've delivered.</h2>
+  </div>
+  <div class="portfolio-grid">
+    <a class="pf-card pf-1" href="https://www.everafterorganizer.id/" target="_blank" rel="noopener noreferrer">
+      <img src="images/portfolio/everafter.jpg" alt="Ever After Wedding Organizer website">
+      <div class="overlay"></div>
+      <div class="content">
+        <div class="cat" data-i18n="home.portfolio.everafter.cat">Build — Website</div>
+        <h4 data-i18n="home.portfolio.everafter.title">Ever After Wedding Organizer</h4>
+        <p data-i18n="home.portfolio.everafter.desc">A company profile website for a wedding organizer, built with a dark theme and lime accent, complete with service and package structure.</p>
+      </div>
+    </a>
+    <a class="pf-card pf-2" href="https://ireemenergy.github.io/ireem-website/" target="_blank" rel="noopener noreferrer">
+      <img src="images/portfolio/ireem.jpg" alt="IREEM website">
+      <div class="overlay"></div>
+      <div class="content">
+        <div class="cat" data-i18n="home.portfolio.ireem.cat">Build — Institutional Website</div>
+        <h4 data-i18n="home.portfolio.ireem.title">IREEM</h4>
+        <p data-i18n="home.portfolio.ireem.desc">An institutional website for an energy and environmental organization, with program structure and multilingual impact portfolio.</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ===== CTA + REVEAL ACTION BAR ===== -->
+<section class="section" style="padding-top:0; padding-bottom:1.5rem;">
+  <div class="reveal-footer">
+    <div class="cta-strip reveal-cta">
+      <h3 data-i18n="cta.heading">Have a project that needs both technical and visual work?</h3>
+      <a href="contact.html" data-i18n="cta.button">Discuss Your Project</a>
+    </div>
+    <div class="footer-actions">
+      <a href="portfolio.html" class="fa-btn"><span data-i18n="nav.portfolio">Portfolio</span> <span class="fa-arrow">→</span></a>
+      <a href="about.html" class="fa-btn"><span data-i18n="nav.about">About</span> <span class="fa-arrow">→</span></a>
+      <a href="#" class="fa-btn" target="_blank" rel="noopener noreferrer">Instagram <span class="fa-arrow">→</span></a>
+      <a href="https://wa.me/6280000000000" class="fa-btn" target="_blank" rel="noopener noreferrer">WhatsApp <span class="fa-arrow">→</span></a>
+    </div>
+  </div>
+  <div class="reveal-footer-room"></div>
+</section>
+
+<footer id="site-footer"></footer>
+
+<script src="js/page-reveal.js?v=2"></script>
+<script src="js/i18n.js"></script>
+<script src="js/components.js?v=2"></script>
+<script src="js/animations.js?v=11"></script>
+<script src="js/lenis-init.js?v=8"></script>
+<script src="js/nav-pill.js?v=1"></script>
+<script src="js/main.js?v=2"></script>
+</body>
+</html>

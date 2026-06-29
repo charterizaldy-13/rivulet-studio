@@ -1,0 +1,54 @@
+/* ===== HERO ===== */
+body.page-home #site-navbar{ background:var(--white); padding:1rem 0 0; }
+body.page-home #site-navbar nav{ margin-top:0; }
+
+.hero-bg{ background:var(--white); padding-bottom:2rem; }
+.hero{
+  min-height:88vh; padding: 6rem 2.8vw 3rem; max-width:1760px; margin:0 auto;
+  display:flex; flex-direction:column; justify-content:center;
+}
+.hero .eyebrow{ margin-bottom:1.6rem; }
+.hero-headline{
+  font-weight:800; line-height:0.94; letter-spacing:-0.03em;
+  font-size: clamp(3.2rem, 9.5vw, 8.8rem);
+  max-width: 17ch;
+}
+.hero-headline .word{ display:inline-block; will-change:filter, opacity; }
+.hero-headline .word span{ display:inline-block; }
+.hero-headline em{ font-style:italic; color:#555; font-weight:700; }
+
+.hero-sub{
+  margin-top:2.2rem; max-width:50ch; font-size:1.25rem; line-height:1.6; color:#555; font-weight:400;
+  opacity:0;
+}
+.hero-cta-row{ margin-top:2.6rem; display:flex; gap:1rem; opacity:0; }
+
+/* ===== BUILD & CRAFT TILES (home preview) ===== */
+.tile-build{ grid-column:span 7; min-height:420px; }
+.tile-build h3{ font-size:clamp(2rem,3.8vw,3.2rem); max-width:14ch; }
+.tile-build p{ max-width:34ch; font-size:1.05rem; }
+.tile-craft{ grid-column:span 5; min-height:420px; }
+.tile-craft h3{ font-size:clamp(1.8rem,3.2vw,2.6rem); }
+
+/* ===== PORTFOLIO PREVIEW ===== */
+.portfolio-grid{ display:grid; grid-template-columns: 1.4fr 1fr; gap:1.4rem; }
+.pf-card{
+  position:relative; border-radius:4px; overflow:hidden; min-height:420px;
+  display:flex; align-items:flex-end; text-decoration:none; color:inherit;
+}
+.pf-card img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;
+  transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.pf-card:hover img{ transform:scale(1.05); }
+.pf-card .overlay{
+  position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.1) 55%, rgba(0,0,0,0) 100%);
+}
+.pf-card .content{ position:relative; z-index:2; padding:2rem; color:var(--white); }
+.pf-card .cat{ font-size:0.76rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--yellow); font-weight:700; margin-bottom:0.5rem; }
+.pf-card h4{ font-weight:800; font-size:1.5rem; letter-spacing:-0.01em; margin-bottom:0.4rem; }
+.pf-card p{ font-size:0.88rem; color:#ccc; max-width:34ch; }
+
+@media (max-width:860px){
+  .portfolio-grid{ grid-template-columns:1fr; }
+}

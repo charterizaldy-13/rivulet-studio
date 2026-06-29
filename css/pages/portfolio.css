@@ -1,0 +1,58 @@
+body{ background:var(--white); }
+
+.port-head{ max-width:1760px; margin:0 auto; padding:5rem 2.8vw 0; }
+.port-head .eyebrow{ margin-bottom:1rem; }
+.port-head h1{
+  font-weight:800; font-size:clamp(3rem,7vw,6.5rem); line-height:0.98; letter-spacing:-0.03em;
+  max-width:20ch;
+}
+.port-head .sub{ margin-top:1.6rem; max-width:54ch; font-size:1.15rem; line-height:1.6; color:#555; }
+
+.port-grid{
+  max-width:1760px; margin:0 auto; padding:4rem 2.8vw 6rem;
+  display:grid; grid-template-columns:repeat(12,1fr); gap:3.6rem 1.4rem;
+}
+
+.port-item.span-7, .port-item.span-5{ grid-column:span 6; }
+
+.port-card{
+  position:relative; display:block; border-radius:28px; overflow:hidden;
+  min-height:420px; text-decoration:none; color:inherit; background:#111;
+}
+
+.port-card img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.port-card:hover img{ transform:scale(1.05); }
+
+.port-card .overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0) 45%);
+  transition:opacity 0.3s ease;
+}
+
+.port-card .visit{
+  position:absolute; left:2rem; bottom:2rem; z-index:2;
+  display:inline-flex; align-items:center; gap:0.5rem;
+  background:var(--yellow); color:var(--ink);
+  padding:0.7rem 1.3rem; border-radius:100px;
+  font-weight:700; font-size:0.88rem;
+  opacity:0; transform:translateY(8px); transition:opacity 0.3s ease, transform 0.3s ease;
+}
+.port-card:hover .visit{ opacity:1; transform:translateY(0); }
+.port-card .visit .arrow{ transition:transform 0.3s ease; }
+.port-card:hover .visit .arrow{ transform:translate(3px,-3px); }
+
+/* ===== META — title/desc moved below the card, like Awwwards ===== */
+.port-meta{ padding:1.4rem 0.2rem 0 1.6rem; }
+.port-meta .cat{ display:none; }
+.port-meta h3{ font-weight:800; font-size:clamp(1.4rem,2vw,1.8rem); letter-spacing:-0.015em; margin-bottom:0.5rem; }
+.port-meta h3 a{ color:var(--ink); text-decoration:none; }
+.port-meta h3 a:hover{ text-decoration:underline; }
+.port-meta p{ font-size:0.95rem; color:#666; max-width:50ch; line-height:1.6; }
+
+@media (max-width:860px){
+  .port-item.span-7, .port-item.span-5{ grid-column:span 12; }
+  .port-card{ min-height:300px; }
+}

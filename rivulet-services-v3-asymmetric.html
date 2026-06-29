@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rivulet Studio — Layanan v3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#0A0A0A; --paper:#F3F2EE; --white:#FFFFFF; --yellow:#F4E04D; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ background:var(--paper); font-family:'Plus Jakarta Sans',sans-serif; color:var(--ink); padding: 4rem 0; }
+
+  .wrap{ max-width:1320px; margin:0 auto; padding: 0 2.4vw; }
+
+  .head{ margin-bottom: 4rem; }
+  .head .eyebrow{ font-size:0.8rem; font-weight:700; letter-spacing:0.04em; color:#8a8a85; margin-bottom:1rem; }
+  .head h1{
+    font-weight:800; font-size: clamp(2.6rem, 6vw, 5rem); line-height:0.98; letter-spacing:-0.025em;
+    max-width: 14ch;
+  }
+
+  /* ===== ASYMMETRIC GRID =====
+     12-column conceptual grid, items take different spans/heights deliberately */
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+  }
+
+  .tile{
+    border-radius: 4px;
+    padding: 2.2rem;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+  }
+
+  /* BUILD pillar — dominant, takes the visual weight */
+  .tile-build-hero{
+    grid-column: span 7;
+    grid-row: span 2;
+    background: var(--ink);
+    color: var(--white);
+    min-height: 420px;
+  }
+  .tile-build-hero .pillar-tag{ font-size:0.78rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#888; }
+  .tile-build-hero h2{
+    font-weight:800; font-size: clamp(2.2rem, 4vw, 3.4rem); letter-spacing:-0.02em; margin: 1.2rem 0 1.6rem;
+    max-width: 12ch;
+  }
+  .tile-build-hero p{ font-size:1rem; color:#aaa; line-height:1.6; max-width:36ch; }
+  .tile-build-hero .services-list{ margin-top: 2rem; display:flex; flex-direction:column; gap: 0; }
+  .tile-build-hero .services-list .srow{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding: 0.9rem 0; border-top: 1px solid #2a2a2a;
+    font-weight:600; font-size:1rem;
+  }
+  .tile-build-hero .services-list .srow:first-child{ border-top:none; }
+  .tile-build-hero .services-list .srow span.tag{ font-size:0.75rem; color:#888; font-weight:500; }
+
+  /* Craft pillar — smaller footprint but bright, draws the eye via color */
+  .tile-craft-hero{
+    grid-column: span 5;
+    background: var(--yellow);
+    color: var(--ink);
+    min-height: 200px;
+  }
+  .tile-craft-hero .pillar-tag{ font-size:0.78rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#8a7600; }
+  .tile-craft-hero h2{ font-weight:800; font-size: clamp(1.8rem, 3vw, 2.6rem); letter-spacing:-0.02em; margin-top:0.8rem; }
+
+  /* Small craft items — narrow strip, text only, no card chrome */
+  .craft-strip{
+    grid-column: span 5;
+    display:flex;
+    flex-direction:column;
+    background: var(--white);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .craft-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding: 1.3rem 1.6rem;
+    border-bottom: 1px solid #eae9e4;
+    font-weight:600;
+  }
+  .craft-row:last-child{ border-bottom:none; }
+  .craft-row .cname{ font-size:1.02rem; }
+  .craft-row .cdesc{ font-size:0.82rem; color:#888; font-weight:400; max-width:24ch; text-align:right; }
+
+  /* CTA — full width, the one place pure boldness lives */
+  .cta-strip{
+    grid-column: span 12;
+    background: var(--ink);
+    border-radius: 4px;
+    padding: 3.5rem 3rem;
+    margin-top: 1rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap: 1.5rem;
+  }
+  .cta-strip h3{
+    color:var(--white); font-weight:800; font-size: clamp(1.6rem,3vw,2.2rem); letter-spacing:-0.02em; max-width:20ch;
+  }
+  .cta-strip button{
+    background:var(--yellow); color:var(--ink); border:none; padding:1.1rem 2.2rem; border-radius:100px;
+    font-weight:700; font-size:1rem; cursor:pointer; white-space:nowrap;
+  }
+
+  @media (max-width: 860px){
+    .tile-build-hero, .tile-craft-hero, .craft-strip, .cta-strip{ grid-column: span 12; }
+    .tile-build-hero{ min-height:auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="head">
+    <div class="eyebrow">Layanan — Rivulet Studio</div>
+    <h1>Dua keahlian, satu studio.</h1>
+  </div>
+
+  <div class="grid">
+
+    <!-- BUILD: dominant tile -->
+    <div class="tile tile-build-hero">
+      <div>
+        <div class="pillar-tag">Build</div>
+        <h2>Fondasi teknis yang bisa diandalkan.</h2>
+        <p>Sistem yang bekerja di balik layar — dari website company profile sampai automation yang menghemat waktu kerja tim Anda.</p>
+      </div>
+      <div class="services-list">
+        <div class="srow">Website Company / Organization <span class="tag">Reguler · Premium</span></div>
+        <div class="srow">Web-based Application <span class="tag">Kalkulator · POS · Custom</span></div>
+        <div class="srow">Automation <span class="tag">n8n · Workflow Custom</span></div>
+      </div>
+    </div>
+
+    <!-- CRAFT: bright accent tile -->
+    <div class="tile tile-craft-hero">
+      <div class="pillar-tag">Craft</div>
+      <h2>Konten visual yang diingat.</h2>
+    </div>
+
+    <!-- CRAFT: list strip below the yellow tile -->
+    <div class="craft-strip">
+      <div class="craft-row"><span class="cname">Motion Graphic</span><span class="cdesc">Animasi promosi & identitas brand</span></div>
+      <div class="craft-row"><span class="cname">Video Editing</span><span class="cdesc">Color grading & penyuntingan</span></div>
+      <div class="craft-row"><span class="cname">Graphic Design</span><span class="cdesc">Identitas visual & materi promosi</span></div>
+      <div class="craft-row"><span class="cname">Photo Editing</span><span class="cdesc">Retouching & color correction</span></div>
+    </div>
+
+    <!-- CTA full width -->
+    <div class="cta-strip">
+      <h3>Punya project yang butuh teknis sekaligus visual?</h3>
+      <button>Diskusikan Project Anda</button>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

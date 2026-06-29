@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rivulet Studio — Sitemap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#0A0A0A; --paper:#F5F5F3; --white:#fff; --yellow:#F4E04D; --line:#d8d8d4; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ background:var(--paper); font-family:'Plus Jakarta Sans',sans-serif; padding: 3rem 4vw; }
+  h1{ font-weight:800; font-size:1.8rem; margin-bottom:0.4rem; }
+  .sub{ color:#777; font-size:0.95rem; margin-bottom:3rem; }
+
+  .tree{ display:flex; flex-direction:column; align-items:center; }
+
+  .node{
+    border-radius:16px; padding:0.9rem 1.6rem; font-weight:700; font-size:0.95rem;
+    text-align:center; position:relative; white-space:nowrap;
+  }
+  .node.root{ background:var(--ink); color:var(--white); font-size:1.1rem; padding:1.1rem 2.2rem; }
+  .node.page{ background:var(--white); border:2px solid var(--ink); color:var(--ink); }
+  .node.sub{ background:var(--white); border:1.5px solid var(--line); color:#333; font-weight:600; font-size:0.85rem; }
+  .node.build{ border-color:var(--ink); }
+  .node.craft{ background:var(--yellow); border-color:var(--yellow); }
+  .node.craft.sub{ background:#FBF3C5; border-color:#e8d98a; }
+  .node.future{ border-style:dashed; color:#999; background:transparent; }
+
+  .vline{ width:2px; height:36px; background:var(--line); }
+  .hline-wrap{ display:flex; align-items:flex-start; gap:0; position:relative; }
+
+  .level1-row{ display:flex; gap:2rem; margin-top:0; }
+  .branch{ display:flex; flex-direction:column; align-items:center; }
+
+  .children-row{ display:flex; gap:1.2rem; margin-top:0; flex-wrap:wrap; justify-content:center; max-width:280px; }
+
+  .connector-row{ display:flex; justify-content:center; width:100%; position:relative; height:36px; }
+
+  .legend{ display:flex; gap:1.6rem; margin-top:4rem; flex-wrap:wrap; }
+  .legend-item{ display:flex; align-items:center; gap:0.5rem; font-size:0.82rem; color:#555; }
+  .legend-swatch{ width:14px; height:14px; border-radius:4px; }
+</style>
+</head>
+<body>
+
+<h1>Sitemap — Rivulet Studio</h1>
+<div class="sub">Struktur halaman untuk pengembangan di Claude Code / VS Code</div>
+
+<div class="tree">
+
+  <div class="node root">rivuletstudio.com</div>
+  <div class="vline"></div>
+
+  <div class="level1-row" style="position:relative;">
+
+    <!-- Home -->
+    <div class="branch">
+      <div class="node page">Home</div>
+    </div>
+
+    <!-- Services -->
+    <div class="branch">
+      <div class="node page">Layanan</div>
+      <div class="vline"></div>
+      <div class="children-row">
+        <div class="node sub build">🔧 Build</div>
+        <div class="node sub craft">🎨 Craft</div>
+      </div>
+    </div>
+
+    <!-- Portfolio -->
+    <div class="branch">
+      <div class="node page">Portfolio</div>
+      <div class="vline"></div>
+      <div class="children-row">
+        <div class="node sub build">Project Detail<br><span style="font-weight:400;font-size:0.75rem;">(dynamic page)</span></div>
+      </div>
+    </div>
+
+    <!-- About -->
+    <div class="branch">
+      <div class="node page">Tentang Kami</div>
+    </div>
+
+    <!-- Contact -->
+    <div class="branch">
+      <div class="node page">Kontak</div>
+    </div>
+
+  </div>
+</div>
+
+<div style="margin-top:4rem; padding-top:2rem; border-top:1px dashed var(--line);">
+  <h1 style="font-size:1.2rem;">Detail isi tiap halaman</h1>
+  <div class="sub" style="margin-bottom:2rem;">Section-section di dalam masing-masing page</div>
+
+  <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem;">
+
+    <div style="background:white; border-radius:20px; padding:1.6rem; border:1px solid #eee;">
+      <div style="font-weight:800; margin-bottom:0.8rem;">🏠 Home</div>
+      <div style="font-size:0.85rem; color:#555; line-height:1.8;">
+        1. Hero (headline + CTA)<br>
+        2. Highlight Layanan (preview Build & Craft)<br>
+        3. Kenapa Rivulet (diferensiasi)<br>
+        4. Portfolio Preview (3-4 project)<br>
+        5. CTA Band<br>
+        6. Footer
+      </div>
+    </div>
+
+    <div style="background:white; border-radius:20px; padding:1.6rem; border:1px solid #eee;">
+      <div style="font-weight:800; margin-bottom:0.8rem;">🧩 Layanan</div>
+      <div style="font-size:0.85rem; color:#555; line-height:1.8;">
+        1. Page Head<br>
+        2. Pillar Nav (Build / Craft tabs)<br>
+        3. Section Build (3 service card)<br>
+        4. Section Craft (4 service card)<br>
+        5. CTA Band<br>
+        6. Footer
+      </div>
+    </div>
+
+    <div style="background:white; border-radius:20px; padding:1.6rem; border:1px solid #eee;">
+      <div style="font-weight:800; margin-bottom:0.8rem;">💼 Portfolio</div>
+      <div style="font-size:0.85rem; color:#555; line-height:1.8;">
+        1. Page Head<br>
+        2. Filter (Build / Craft / All)<br>
+        3. Grid Project Card<br>
+        4. → Project Detail (per-item)<br>
+        5. CTA Band<br>
+        6. Footer
+      </div>
+    </div>
+
+    <div style="background:white; border-radius:20px; padding:1.6rem; border:1px solid #eee;">
+      <div style="font-weight:800; margin-bottom:0.8rem;">👤 Tentang Kami</div>
+      <div style="font-size:0.85rem; color:#555; line-height:1.8;">
+        1. Page Head / Story<br>
+        2. Pendekatan/Filosofi Kerja<br>
+        3. (Opsional) Tim/Founder<br>
+        4. CTA Band<br>
+        5. Footer
+      </div>
+    </div>
+
+    <div style="background:white; border-radius:20px; padding:1.6rem; border:1px solid #eee;">
+      <div style="font-weight:800; margin-bottom:0.8rem;">✉️ Kontak</div>
+      <div style="font-size:0.85rem; color:#555; line-height:1.8;">
+        1. Page Head<br>
+        2. Form Kontak<br>
+        3. Info Alternatif (email/WA)<br>
+        4. Footer
+      </div>
+    </div>
+
+    <div style="background:white; border-radius:20px; padding:1.6rem; border:1px solid #eee;">
+      <div style="font-weight:800; margin-bottom:0.8rem;">✅ Keputusan Final</div>
+      <div style="font-size:0.85rem; color:#555; line-height:1.8;">
+        • Tidak ada Blog/Insight (fokus 5 halaman inti)<br>
+        • Tidak ada testimoni untuk versi pertama<br>
+        • Pricing "by request" — semua CTA arahkan ke Kontak
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div style="margin-top:4rem; padding-top:2rem; border-top:1px dashed var(--line);">
+  <h1 style="font-size:1.2rem;">Struktur folder untuk Claude Code</h1>
+  <div class="sub" style="margin-bottom:2rem;">HTML/CSS/JS murni — tanpa framework, siap dipakai sebagai starting point</div>
+
+  <div style="background:#0A0A0A; border-radius:20px; padding:1.8rem 2rem; color:#e8e8e8; font-family:'Courier New',monospace; font-size:0.85rem; line-height:1.7; overflow-x:auto;">
+rivulet-studio/<br>
+├── index.html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#888;"># Home</span><br>
+├── layanan.html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#888;"># Build & Craft pillars</span><br>
+├── portfolio.html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#888;"># Grid project</span><br>
+├── portfolio/<br>
+│&nbsp;&nbsp;├── project-1.html&nbsp;&nbsp;<span style="color:#888;"># Detail per-project</span><br>
+│&nbsp;&nbsp;├── project-2.html<br>
+│&nbsp;&nbsp;└── ...<br>
+├── tentang.html<br>
+├── kontak.html<br>
+│<br>
+├── css/<br>
+│&nbsp;&nbsp;├── variables.css&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#888;"># Warna, font, spacing (:root)</span><br>
+│&nbsp;&nbsp;├── base.css&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#888;"># Reset, typography dasar</span><br>
+│&nbsp;&nbsp;├── components.css&nbsp;&nbsp;&nbsp;<span style="color:#888;"># Navbar, Button, Card, CTABand</span><br>
+│&nbsp;&nbsp;└── pages/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#888;"># CSS khusus per-halaman (jika perlu)</span><br>
+│<br>
+├── js/<br>
+│&nbsp;&nbsp;├── components.js&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#888;"># Navbar inject, footer inject (reuse HTML)</span><br>
+│&nbsp;&nbsp;├── animations.js&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#888;"># GSAP ScrollTrigger setup</span><br>
+│&nbsp;&nbsp;└── main.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#888;"># Init umum, smooth scroll (Lenis)</span><br>
+│<br>
+└── images/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── portfolio/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;└── icons/
+  </div>
+
+  <div style="margin-top:1.4rem; font-size:0.85rem; color:#666; line-height:1.7; max-width:70ch;">
+    💡 <strong>Catatan untuk Claude Code:</strong> karena tanpa framework, navbar &amp; footer akan terduplikasi di tiap file <code style="background:#eee; padding:0.1rem 0.4rem; border-radius:4px;">.html</code>. Dua cara mengatasi ini — minta Claude Code untuk:<br>
+    <strong>(a)</strong> inject HTML navbar/footer lewat <code style="background:#eee; padding:0.1rem 0.4rem; border-radius:4px;">js/components.js</code> (fetch partial HTML ke setiap halaman), atau<br>
+    <strong>(b)</strong> simpan 1 file master lalu copy-paste manual ke tiap halaman saat ada perubahan.<br>
+    Opsi (a) lebih rapi untuk maintain jangka panjang meski sedikit lebih rumit di awal.
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><span class="legend-swatch" style="background:#0A0A0A;"></span> Halaman utama</div>
+  <div class="legend-item"><span class="legend-swatch" style="background:#fff; border:1.5px solid #0A0A0A;"></span> Halaman level-1</div>
+  <div class="legend-item"><span class="legend-swatch" style="background:#F4E04D;"></span> Sub-kategori Craft</div>
+  <div class="legend-item"><span class="legend-swatch" style="background:#fff; border:1.5px dashed #ccc;"></span> Belum diputuskan</div>
+</div>
+
+</body>
+</html>
