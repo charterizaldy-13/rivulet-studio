@@ -22,8 +22,8 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     Promise.all([
-      inject('#site-navbar', '/partials/navbar.html', markActiveLink),
-      inject('#site-footer', '/partials/footer.html')
+      inject('#site-navbar', 'partials/navbar.html', markActiveLink),
+      inject('#site-footer', 'partials/footer.html')
     ]).then(() => {
       // i18n.apply() runs again inside each inject() above (it re-applies
       // data-i18n-html across the whole document, including the hero headline) —
